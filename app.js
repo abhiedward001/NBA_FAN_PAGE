@@ -11,6 +11,7 @@
      var yelpcalm=require("./routes/yelpcalm");
    
      var User=require("./models/user");
+     var port = process.env.PORT || 5000;
 
     
 // PASSPORT CONFIG
@@ -43,6 +44,6 @@ mongoose.connect("mongodb+srv://abhiedward001:abhi@123@cluster0.akhwn.mongodb.ne
     console.log("error",err);
 });
 
-app.listen(4000, ()=>{
+app.listen(port, ()=>{
 console.log("someone staretd the server");
 });
