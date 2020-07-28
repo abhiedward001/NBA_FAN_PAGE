@@ -1,0 +1,50 @@
+<%- include("../partials/header") %>
+
+<br>
+<br>
+<div class="box">
+<div class="row">
+   <div class="col-lg-4 col-md-4 col-sm-4">
+         <div class="jumbotron" style="background-color:#F9F9D1;">
+             <div class="text-right">
+                <a class="btn btn-sm btn-success " href="/campgrounds/<%= campground._id %>/comments/new">ADD NEW COMMENT</a>
+             </div><br> <br>
+             <% campground.comments.forEach(function(comment){ %>
+                
+                        
+                           <p>
+                            <%= comment.text %> 
+                           </p> 
+                         <p> <strong>Author-: <%= comment.author.username %></strong> </p>
+                        
+                         
+                      
+                        
+                        <% }) %>
+                    
+                
+              </div>
+          </div> 
+   
+    
+          <div class="col-lg-8 col-md-8 col-sm-8">
+              <div class="thumbnail">
+                <a class="btn btn-dark" href="/campgrounds/">HOME PAGE</a>&nbsp;&nbsp;
+                <a class="btn btn-info" href="/campgrounds/<%= campground._id %>/edit">Edit & Update</a>&nbsp;&nbsp;
+                <span style="display: inline-block;"><form action="/campgrounds/<%=campground._id%>?_method=delete" method="POST">
+                  <button class="btn btn-danger">Delete</button>&nbsp;&nbsp;
+                  <span ><strong>Post Created By </strong><i class="fas fa-user-circle"></i> - <em> <%= (campground.author.username ).toUpperCase()%> </em></span>
+              </form></span>
+                <br> <br>
+               <img class="img-responsive" style="width: 100%;height: auto;"src="<%= campground.image%>">
+               &nbsp;&nbsp;
+               <div class="caption-full">
+               <strong><%= campground.name%></strong>
+              </div><br>
+              <%= campground.description%>
+             </div>
+            </div>
+     </div>
+    </div>
+    
+<%- include("../partials/footer") %>

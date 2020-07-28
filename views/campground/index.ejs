@@ -1,0 +1,38 @@
+<%- include("../partials/header") %>
+
+
+
+
+
+<div class="container" style="margin-top: 50px;">
+
+    <div class="jumbotron"><h1>List of world's Best NBA players! <i class="fas fa-baseball-ball"></i></h1>
+       <button type="button" class="btn btn-outline-dark" onclick="window.location.href='/campgrounds/new';">Add New Player Profile </button> 
+    </div>
+
+
+    <div class="row" > 
+    <% campground.forEach(function(value){ %>
+    
+    <div class="col-lg-4 col-md-4 col-sm-6" > 
+ 
+       <div class="thumbnail" >
+        
+          <img class="img-responsive zoom" src="<%= value.image %>" style="width:100%;height:auto;" >
+          
+           <div class="caption" style="padding: 9px;">
+             <h4><%= value.name %></h4>
+           </div>
+           <p>
+               <a href="/campgrounds/<%= value._id%>"class="btn btn-info">Show More</a>
+           </p>
+        </div>
+    
+     
+    </div>
+   <% }) %>
+  
+ </div>
+</div>
+
+<%- include("../partials/footer") %>
