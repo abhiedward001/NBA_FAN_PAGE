@@ -188,7 +188,7 @@ router.post("/signup",(req,res)=>{
            return res.render("auth/signup");
        }
        passport.authenticate("local")(req,res,function(){
-           res.redirect("/login");
+           res.redirect("/campgrounds");
        });
    });
 
