@@ -37,8 +37,8 @@ passport.deserializeUser(User.deserializeUser());  // for decoding session
     
 
 seedDb();
-var url=process.env.DATABASEURL;
-mongoose.connect(URL,{ useNewUrlParser: true,useUnifiedTopology: true }).then(()=>{
+
+mongoose.connect(process.env.DATABASEURL,{ useNewUrlParser: true,useUnifiedTopology: true }).then(()=>{
     console.log("connected to dbi");
 }).catch((err)=>{
     console.log("error",err);
