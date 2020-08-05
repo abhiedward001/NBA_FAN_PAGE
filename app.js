@@ -37,8 +37,8 @@ passport.deserializeUser(User.deserializeUser());  // for decoding session
     
 
 seedDb();
-
-mongoose.connect("mongodb+srv://abhiedward001:abhi@123@cluster0.akhwn.mongodb.net/nbafanpage?retryWrites=true&w=majority",{ useNewUrlParser: true,useUnifiedTopology: true }).then(()=>{
+var url=process.env.DATABASEURL;
+mongoose.connect(URL,{ useNewUrlParser: true,useUnifiedTopology: true }).then(()=>{
     console.log("connected to dbi");
 }).catch((err)=>{
     console.log("error",err);
