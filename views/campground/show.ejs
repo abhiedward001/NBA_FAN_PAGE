@@ -4,7 +4,7 @@
 <br>
 <div class="box">
 <div class="row">
-   <div class="col-lg-4 col-md-4 col-sm-4">
+   <div class="col-lg-4 col-md-4 col-sm-4 " >
          <div class="jumbotron" style="background-color:#F9F9D1;">
              <div class="text-right">
                 <a class="btn btn-sm btn-success " href="/campgrounds/<%= campground._id %>/comments/new">ADD NEW COMMENT</a>
@@ -27,7 +27,7 @@
           </div> 
    
     
-          <div class="col-lg-8 col-md-8 col-sm-8">
+          <div class="col-lg-8 col-md-8 col-sm-8" >
               <div class="thumbnail">
                 <a class="btn btn-dark" href="/campgrounds/">HOME PAGE</a>&nbsp;&nbsp;
                 <a class="btn btn-info" href="/campgrounds/<%= campground._id %>/edit">Edit & Update</a>&nbsp;&nbsp;
@@ -36,12 +36,33 @@
                   <span ><strong>Post Created By </strong><i class="fas fa-user-circle"></i> - <em> <%= (campground.author.username ).toUpperCase()%> </em></span>
               </form></span>
                 <br> <br>
-               <img class="img-responsive" style="width: 100%;height: auto;"src="<%= campground.image%>">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
+                  <div class="carousel-inner">
+                    <div class="carousel-item active" >
+                      <img src="<%= campground.show[0] %>" class="d-block w-100" style="max-height: 47em;"   >
+                    </div>
+                    <div class="carousel-item">
+                      <img src="<%= campground.show[1] %>"class="d-block w-100" style="max-height: 47em;"  >
+                    </div>
+                    <div class="carousel-item">
+                      <img src="<%= campground.show[2] %>" class="d-block w-100" style="max-height: 47em;"  >
+                    </div>
+                  </div>
+                  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" >
+                    <span class="carousel-control-prev-icon" aria-hidden="true" ></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+               <!-- <img class="img-responsive" style="width: 100%;height: auto;"src="<%= campground.image%>"> -->
                &nbsp;&nbsp;
-               <div class="caption-full">
+               <div class="caption-full" style="font-size: 18px;">
                <strong><%= campground.name%></strong>
               </div><br>
-              <%= campground.description%>
+            <span id="text" style="font-size: 22px;font-family: Georgia, 'Times New Roman', Times, serif;"> <%= campground.description%></span> 
              </div>
             </div>
      </div>

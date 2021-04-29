@@ -38,11 +38,17 @@ passport.deserializeUser(User.deserializeUser());  // for decoding session
 
 seedDb();
 
-mongoose.connect(process.env.DATABASEURL,{ useNewUrlParser: true,useUnifiedTopology: true }).then(()=>{
+mongoose.connect("mongodb+srv://abhiedward001:abhi@123@cluster0.akhwn.mongodb.net/demo?retryWrites=true&w=majority",{ useNewUrlParser: true,useUnifiedTopology: true }).then(()=>{
     console.log("connected to dbi");
 }).catch((err)=>{
     console.log("error",err);
 });
+
+// mongoose.connect(process.env.DATABASEURL,{ useNewUrlParser: true,useUnifiedTopology: true }).then(()=>{
+//     console.log("connected to dbi");
+// }).catch((err)=>{
+//     console.log("error",err);
+// });
 
 app.listen(port, ()=>{
 console.log("someone staretd the server");

@@ -43,11 +43,12 @@ router.post("/campgrounds",isloggedin,function(req,res){
     var name=req.body.name;
     var image=req.body.image;
     var descp=req.body.description;
+    var showimg=[req.body.show1,req.body.show2,req.body.show3];
     var author={
         id:req.user._id,
         username:req.user.username
     }
-    var newcamp={name:name,image:image,description:descp,author:author};
+    var newcamp={name:name,image:image,description:descp,show:showimg,author:author};
     Campground.create(newcamp,function(err,data){
         if (err){
             console.log(err);
@@ -98,7 +99,12 @@ router.get("/campgrounds/:id/edit",isloggedin,(req,res)=>{
 });
 // update route
 router.put("/campgrounds/:id",isloggedin,(req,res)=>{
-    Campground.findByIdAndUpdate(req.params.id,req.body.camp,function(err,updateddata){
+    var name=req.body.name;
+    var image=req.body.image;
+    var descp=req.body.description;
+    var arr=[req.body.show0,req.body.show1,req.body.show2];
+    var obj={name:name,image:image,description:descp,show:arr};
+    Campground.findByIdAndUpdate(req.params.id,obj,function(err,updateddata){
         if(err){
             console.log(err);
             return res.redirect("/");
@@ -199,11 +205,15 @@ router.post("/signup",(req,res)=>{
 router.get("/login",(req,res)=>{
     res.render("auth/login",{currentUser:req.user});
 });
+router.get("/notfound",(req,res)=>{
+    res.render("auth/notfound",{currentUser:req.user});
+});
+
 
 // login logic
 router.post("/login",passport.authenticate("local",{
     successRedirect:"/campgrounds",
-    failureRedirect:"/login"
+    failureRedirect:"/notfound"
 }),function(req,res){
 
 });
